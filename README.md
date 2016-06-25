@@ -1,3 +1,7 @@
+### Package Status
+[![Build Status](https://travis-ci.org/jlepird/PreferenceElicitation.jl.png)](https://travis-ci.org/jlepird/PreferenceElicitation.jl)
+[![codecov.io](https://codecov.io/gh/jlepird/PreferenceElicitation.jl/coverage.svg?branch=master)](https://codecov.io/gh/jlepird/PreferenceElicitation.jl?branch=master)
+
 ### What is preference elicitation for engineering design optimization?
 In engineering design optimization, one must inevitably make trade-offs between multiple conflicting design objectives, such as cost, reliability, and performance. Often, this trade-off must be made explicitly by specifying a tradeoff ratio between the objectives. But setting these trade-off ratios is *hard*.  You might have a ballpark intuition for what they should be, but often the optimization is very sensitive to the choice of trade-offs. 
 
