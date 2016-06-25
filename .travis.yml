@@ -1,6 +1,5 @@
 language: julia
 julia:
   - release
-  - nightly
 after_success:
 - julia -e 'cd(Pkg.dir("PreferenceElicitation")); Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
