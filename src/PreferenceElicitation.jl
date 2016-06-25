@@ -26,7 +26,8 @@ type PrefEl
 end
 
 # Default constructor
-function prefEl(data; strict = zeros(Int,0,2),
+function prefEl(data; 
+			 strict = zeros(Int,0,2),
 			 indif  = zeros(Int,0,2),
 			 priors = [],
 			 sigma = [],
@@ -41,6 +42,8 @@ function prefEl(data; strict = zeros(Int,0,2),
 			p[i] = Uniform(-Inf,Inf)
 		end 
 		priors = Priors(dists = p)
+	else
+		priors = Priors(dists = priors)
 	end
 
 	# Set covariance matrix

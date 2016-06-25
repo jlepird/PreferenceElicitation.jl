@@ -13,8 +13,6 @@ function calculateLogProb(x,p::PrefEl)
 
 	out += logPrior(x,p.priors.dists)
 
-	println(out)
-
 	return out 
 end
 
@@ -90,9 +88,9 @@ function infer(p::PrefEl; method = "MAP")
 
 		minF, maxX, ret = optimize(opt,means)
 
-		println(size(maxX))
+		#println(size(maxX))
 
-		println("Optimization returned with code $ret")
+		# println("Optimization returned with code $ret")
 
 		return maxX
 
