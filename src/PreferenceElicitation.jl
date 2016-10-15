@@ -102,19 +102,19 @@ end
 
 # Basic interface
 
-macro addPref(p,ex)
+macro addPref(p, ex)
 
-	@assert ex.head == :comparison
+	ex.args[1] in [:(==), :(>), :(<)] || error("Expression must contain comparision between two row elements.\nE.g. 1 > 2")
 
-	one = ex.args[1]
+	one = ex.args[2]
 	two = ex.args[3]
 
-	if ex.args[2] == :(==) # indif comparison
+	if ex.args[1] == :(==) # indif comparison
 		return quote
 			$(esc(p)).indif = [$(esc(p)).indif; $(esc(one)) $(esc(two))]
 			$(esc(p))
 		end
-	elseif ex.args[2] == :(>)
+	elseif ex.args[1] == :(>)
 		return quote
 			if $(esc(p)).sense == :Max 
 				$(esc(p)).strict = [$(esc(p)).strict; $(esc(one)) $(esc(two))]
@@ -123,7 +123,7 @@ macro addPref(p,ex)
 			end
 			$(esc(p))
 		end
-	elseif ex.args[2] == :(<)
+	elseif ex.args[1] == :(<)
 		return quote
 			if $(esc(p)).sense == :Max 
 				$(esc(p)).strict = [$(esc(p)).strict; $(esc(two)) $(esc(one))]

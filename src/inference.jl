@@ -4,11 +4,11 @@ function calculateLogProb(x,p::PrefEl)
 	# println("x = $x")
 
 	for i in 1:size(p.strict,1)
-		out += getLogStrictProb(x,p.data[p.strict[i,1],:],p.data[p.strict[i,2],:],p.Sigma)
+		out += getLogStrictProb(x,p.data[p.strict[i,1],:]',p.data[p.strict[i,2],:]',p.Sigma)
 	end
 
 	for i in 1:size(p.indif,1)
-		out += getLogIndifProb(x,p.data[p.indif[i,1],:],p.data[p.indif[i,2],:],p.Sigma)
+		out += getLogIndifProb(x,p.data[p.indif[i,1],:]',p.data[p.indif[i,2],:]',p.Sigma)
 	end
 
 	out += logPrior(x,p.priors.dists)
